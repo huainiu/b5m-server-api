@@ -1,0 +1,30 @@
+日志说明：
+
+web.xml:
+com.b5m.spring.AccessLogDispatcherServlet 代替 org.springframework.web.servlet.DispatcherServlet
+添加：serverName参数 表示什么服务名
+     includeLogPath 表示需要添加访问日志的api
+例子：
+<servlet>
+	<servlet-name>dispatcher</servlet-name>
+	<servlet-class>com.b5m.spring.AccessLogDispatcherServlet</servlet-class>
+	<init-param>
+    	<param-name>contextConfigLocation</param-name>
+     	<param-value>classpath:application.xml</param-value>
+ 	</init-param>
+ 	<init-param>
+    	<param-name>serverName</param-name>
+    	<param-value>search-api</param-value>
+    </init-param>
+    <init-param>
+    	<param-name>includeLogPath</param-name>
+    	<param-value>/api,/allAutoFill.htm,/mautofill.htm</param-value>
+    </init-param>
+	<load-on-startup>1</load-on-startup>
+</servlet>
+
+需要 在spring配置文件中 添加 com.b5m.base.common.spring.utils.ApplicationContextUtils
+
+需要引入dubbo提供出来的服务：
+com.b5m.service.log.LogService
+
