@@ -48,7 +48,17 @@ public class AccessLogDispatcherServlet extends DispatcherServlet{
 	protected boolean isInclude(String[] includeLogPath, HttpServletRequest request){
 		if(includeLogPath == null) return false;
 		String api = request.getRequestURI();
+		if(api.endsWith(".css") || api.endsWith(".js") || api.endsWith(".jsp") || api.endsWith(".jpg") || api.endsWith(".png") || api.endsWith(".gif") || api.endsWith(".ico")) return false;
 		for(String path : includeLogPath){
+			if(path.startsWith("*") && path.endsWith("*")){
+				if(api.indexOf(path) >= 0) return true;
+			}
+			if(path.startsWith("*")){
+				if(api.endsWith(api)) return true;
+			}
+			if(path.endsWith("*")){
+				if(api.startsWith(api)) return true;
+			}
 			if(api.equals(path)) return true;
 		}
 		return false;

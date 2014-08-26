@@ -16,7 +16,7 @@ public interface PriceTrendService {
 	 * @return
 	 */
 	@Cache
-	String priceTrendTyp(String[] docIds, Integer range);
+	String priceTrendType(String[] docIds, Integer range);
 	
 	@Cache
 	PriceTrend singlePriceTrend(Integer range, String docId, boolean fill, String price);

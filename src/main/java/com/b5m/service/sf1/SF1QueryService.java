@@ -3,12 +3,26 @@ package com.b5m.service.sf1;
 import java.util.List;
 import java.util.Map;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.b5m.bean.dto.SuiSearchDto;
 import com.b5m.service.sf1.bean.AutoFillInfo;
-import com.b5m.service.sf1.bean.SuiSearchDto;
 import com.b5m.sf1api.dto.res.SearchDTO;
 
 public interface SF1QueryService {
+	/**
+	 *<font style="font-weight:bold">Description: </font> <br/>
+	 * 查询预见价格
+	 * @author echo
+	 * @email wuming@b5m.cn
+	 * @since 2014年8月21日 下午7:17:30
+	 * @param forecast
+	 * @return
+	 */
+	JSONObject forecastPrice(JSONArray forecast);
+	
+	JSONObject forecastPrice(JSONArray forecast, String collection);
+	
 	/**
 	 *<font style="font-weight:bold">Description: </font> <br/>
 	 * 搜索
