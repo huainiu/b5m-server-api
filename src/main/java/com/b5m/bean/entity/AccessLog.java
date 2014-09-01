@@ -6,6 +6,7 @@ import java.util.Date;
 import com.b5m.dao.annotation.Column;
 import com.b5m.dao.annotation.Id;
 import com.b5m.dao.annotation.Table;
+import com.b5m.dao.domain.ColType;
 
 //接口访问日志
 @Table("t_access_log_{date}")
@@ -21,25 +22,25 @@ public class AccessLog implements Serializable{
     @Column	
 	private String server;
     //访问路径
-    @Column	
+    @Column
 	private String path;
     //ip
     @Column	
 	private String ip;
     //来源
-    @Column	
+    @Column(type = ColType.TEXT)
 	private String ref;
     //访问时间
     @Column(name = "access_date")	
     private Date accessDate;
     //参数
-    @Column(name = "params")
+    @Column(name = "params", type = ColType.TEXT)
     private String params;
     
     @Column(name = "respone_time")
     private Long responeTime;
     
-    @Column(name = "description")
+    @Column(name = "description", type = ColType.TEXT)
     private String description;
     
     @Column(name = "exception")
